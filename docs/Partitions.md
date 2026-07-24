@@ -2,7 +2,7 @@
 
 ## 概要
 
-- 32GiBのディスクを想定
+- 48GiBのディスクを想定
 
 ## Debianのインストール中にやったもの
 
@@ -45,7 +45,7 @@
 
 ### 4. `/home`
 
-8GiB
+10GiB
 
 ### 5. `/var`
 
@@ -55,11 +55,19 @@ TODO: 調べる
 
 ### 6. `/srv`
 
+4GiB
+
 TODO: 調べる
+
+[fhs - What's the most appropriate directory where to place files shared between users? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/70700/whats-the-most-appropriate-directory-where-to-place-files-shared-between-users)
 
 ### 7. `/tmp`
 
+4GiB
+
 TODO: 調べる
+
+[10.04 - How large should I make root, home, usr, var, and tmp partitions? - Ask Ubuntu](https://askubuntu.com/questions/146838/how-large-should-i-make-root-home-usr-var-and-tmp-partitions)
 
 ### 8. `/var/log`
 

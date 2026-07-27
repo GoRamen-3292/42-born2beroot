@@ -67,7 +67,7 @@ TODO: 調べる
 
 TODO: 調べる
 
-[10.04 - How large should I make root, home, usr, var, and tmp partitions? - Ask Ubuntu](https://askubuntu.com/questions/146838/how-large-should-i-make-root-home-usr-var-and-tmp-partitions)
+[10.04 - How large should I make root, [Logical Volume Manager (LVM) versus standard partitioning in Linux](https://www.redhat.com/en/blog/lvm-vs-partitioning)me-usr-var-and-tmp-partitions)
 
 ### 8. `/var/log`
 
@@ -75,11 +75,40 @@ TODO: 調べる
 
 TODO: 調べる
 
+ログファイル
+
+- `/var/log/journal` ファイルにOS起動の際のログが残されている
+- `journalctl` コマンドでログを取得可能
+  - 中には8MBものファイルがある
+  - バイナリファイル? 文字化けしている
+
+#### `/var/log/README`
+
+> You are looking for the traditional text log files in /var/log, and they are gone?
+> 
+> Here's an explanation on what's going on:
+> 
+> You are running a systemd-based OS where traditional syslog has been replaced with the Journal. The journal stores the same (and more) information as classic syslog. To make use of the journal and access the collected log data simply invoke "journalctl", which will output the logs in the identical text-based format the syslog files in /var/log used to be. For further details, please refer to journalctl(1).
+> 
+> Alternatively, consider installing one of the traditional syslog implementations available for your distribution, which will generate the classic log files for you. Syslog implementations such as syslog-ng or rsyslog may be installed side-by-side with the journal and will continue to function
+the way they always did.
+> 
+> Thank you!
+
+つまり、ログの記録の方法が変わったらしい。`journalctl > a.txt` などは引き続き可能であった。(一部内容についてはrootでないと取得できなかった。)
+
 ## 違い
 
 ### LVM vs Partition
 
 TODO: 調べる
+
+Partitionは、従来のようにディスクを分割する。このメリットについては別に説明。
+
+一方で、LVMとは、複数の物理ディスク / ボリュームをまとめてVolume Groupとし、その中で... TODO: 続きを書く
+
+LVM: 
+[Logical Volume Manager (LVM) versus standard partitioning in Linux](https://www.redhat.com/en/blog/lvm-vs-partitioning)
 
 ## 参考
 

@@ -101,11 +101,9 @@ the way they always did.
 
 ### LVM vs Partition
 
-TODO: 調べる
-
 Partitionは、従来のようにディスクを分割する。このメリットについては別に説明。
 
-一方で、LVMとは、複数の物理ディスク / ボリュームをまとめてVolume Groupとし、その中で... TODO: 続きを書く
+一方で、LVMとは、複数の物理ディスク(PV)やパーティションなどをまとめてVolume Groupとし、その中に論理ボリューム(Logical Volume)を作成することができる仕組みである。従来のパーティションの場合、パーティション分割後のサイズの変更などが困難な場合があるが、LVMではディスクのサイズを柔軟に変更をすることができる。
 
 LVM: 
 [Logical Volume Manager (LVM) versus standard partitioning in Linux](https://www.redhat.com/en/blog/lvm-vs-partitioning)

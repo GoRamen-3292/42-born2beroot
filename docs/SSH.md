@@ -4,7 +4,7 @@
 
 ### 設定ファイル
 
-`/etc/sshd_config` を編集
+`/etc/ssh/sshd_config` を編集
 
 ### 変更箇所
 

@@ -14,19 +14,42 @@ Summary: このセクションでは、"required additions"として課題で求
 
 #### Debian vs Rocky Linux
 
-Debianは、Debian Projectによって開発されているフリーなOSである。Ubuntuなどの多くのソフトウェアのベースとなるOSとなっている。
+どちらも、Windows 11やMac OS 26、iOS 26、Android 17、Ubuntuのような、OSの一種である。
 
-一方で、Rocky Linuxは
+Linuxには、ディストリビューションという異なる種類の違うものがある。
+
+Debianは、Debian Projectによって開発されているフリーなOSである。UbuntuやRaspberry Pi OSなどの多くのソフトウェアの派生元となるOSとなっている。
+
+一方で、Rocky LinuxはRed Hat Enterprise Linuxから直接派生したOSで、CentOSの正式な後継である。
+
+> Rocky Linux is a community-driven Enterprise Linux distribution— stable enough for the largest enterprise to rely on it, and community-driven to ensure it stays accessible to all.
+
+とある通り、コミュニティによるエンタープライズレベルのLinuxディストリビューションであると述べられている。
 
 - [Debian -- Reasons to use Debian](https://www.debian.org/intro/why_debian)
 - [第1章 定義と概要](https://www.debian.org/doc/manuals/debian-faq/basic-defs.ja.html)
+- [Rocky Linux](https://rockylinux.org/)
+
+[About - Rocky Linux](https://rockylinux.org/about)
 
 ### AppArmor vs SELinux
 
-TODO: 記述する
+AppArmorとは、ユーザーやグループによる権限管理だけではなく、実行ファイルごとに権限を分けることによってセキュリティの向上を図るものである。これは、`Application-Centric` と公式サイトに説明されている通りである。
+
+一方で、SELinuxは、より広範な設定を可能にするものである。例えば、アプリケーションやプロセス、ファイルなどに対するアクセス制限が可能である。
+
+どちらも、UNIXのシステムではDAC (任意アクセス制御)が採用されている中で、MAC(強制アクセス制御)を可能にするものである。つまり、sudoなどの権限を通して強制的に実行することができなくなるようにするもので、root以外権限設定を変更することができなくなるようにするものである。
+
+[AppArmor #Security - Qiita](https://qiita.com/propella/items/a6b646916b48029c369e)
+
+[SELinux とは？をわかりやすく解説](https://www.redhat.com/ja/topics/linux/what-is-selinux)
 
 - [AppArmor Documentation - AppArmor](https://www.apparmor.net/)
 - [AppArmor vs SELinux - AppArmor](https://www.apparmor.net/about/apparmor_vs_selinux/)
+
+[DAC(任意アクセス制御)とMAC(強制アクセス制御)、RBAC(ロールベースアクセス制御)の違い #初心者 - Qiita](https://qiita.com/miyuki_samitani/items/acde77784237e482aef8)
+
+
 
 ### UFW vs firewalld
 

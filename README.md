@@ -14,7 +14,9 @@ Summary: このセクションでは、"required additions"として課題で求
 
 #### Debian vs Rocky Linux
 
-Debianは、Debian Projectによって開発されているフリーなOSである。Ubuntuなどの多くのソフトウェアのベースとなるOSとなっていて、
+Debianは、Debian Projectによって開発されているフリーなOSである。Ubuntuなどの多くのソフトウェアのベースとなるOSとなっている。
+
+一方で、Rocky Linuxは
 
 - [Debian -- Reasons to use Debian](https://www.debian.org/intro/why_debian)
 - [第1章 定義と概要](https://www.debian.org/doc/manuals/debian-faq/basic-defs.ja.html)
@@ -34,11 +36,20 @@ Uncomplicated Firewall、通称UFWはnetfilter firewallを制御するもので�
 
 ### VirtualBox vs UTM
 
-Virtual Boxは、Oracle社によって開発されている仮想化ソフトで、
+どちらもハイパーバイザー、ホストのリソースとゲストのリソースをつなぐソフトウェアである。
 
-ハードウェアによる仮想化 (TODO: もっとちゃんと調べる)
+Virtual Boxは、Oracle社によって開発されている仮想化ソフト。物理的なコアやメモリを割り当てた上で実行する、ハードウェアによる仮想化 (TODO: もっとちゃんと調べる)
 
-UTMはQEMUという仮想化技術をベースにした仮想
+UTMはQEMUという仮想化技術をベースにした仮想化ソフト。エミュレータによって、異なるアーキテクチャのOSを動かしたりすることができる。
+
+違いは
+- 開発元が違う
+- 仮想化の方法が若干違う
+- 
+
+[わかりやすくQEMUを説明してみる（第1回）：QEMUの利用シーン | PDT(プロファウンド・デザイン・テクノロジー）](https://www.profound-dt.co.jp/qemu/qemu_chap1/)
+
+[サーバー仮想化とは？3つの方式とメリット・デメリットを解説](https://crexgroup.com/ja/development/development/what-is-server-virtualization/)
 
 エミュレータ・シミュレータ (TODO: もっとちゃんと調べる)
 

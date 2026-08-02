@@ -31,7 +31,7 @@ Defaults        log_input, log_output
 Defaults        logfile=/var/log/sudo/sudo.log
 
 ## パスワードミス時のメッセージ変更
-Defaults        badpass_message="Sorry, please try again. :<"
+Defaults        badpass_message="Calm down, ensure that the command you are trying to execute is correct and please try again. :<"
 
 # This fixes CVE-2005-4890 and possibly breaks some versions of kdesu
 # (#1011624, https://bugs.kde.org/show_bug.cgi?id=452532)
@@ -53,6 +53,34 @@ man sudoers
 
 > A pseudoterminal (sometimes abbreviated "pty") is a pair of virtual character devices that provide a bidirectional communication channel. One end of the channel is called the master; the other end is called the slave.
 
-tty: manにはなし
+[擬似コード - Wikipedia](https://ja.wikipedia.org/wiki/%E6%93%AC%E4%BC%BC%E3%82%B3%E3%83%BC%E3%83%89)
+
+疑似ターミナル
+
+- 1段階ある、
+
+ttyは、「テレタイプ」が語源である。しかしながら、当時のこの技術がプロトコルとして使われている。UNIX環境においては、何かしらの形でユーザーの手によって、入出力ができるターミナルが割り当てられていることであると認識している。
+
+例えば、
+
+```bash
+ssh [接続先] sudo apt update
+```
+
+は`sudo: sorry, you must have a tty to run sudo` と表示されてできない。
+
+この有無は `tty` コマンドを利用することによって確認できる。ただし、パイプを通して利用された場合には利用できる場合がある。
+
+[What is Pseudo TTY-Allocation? (SSH and Github) - Stack Overflow](https://stackoverflow.com/questions/17900760/what-is-pseudo-tty-allocation-ssh-and-github)
+
+[テレタイプ端末 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%86%E3%83%AC%E3%82%BF%E3%82%A4%E3%83%97%E7%AB%AF%E6%9C%AB)
+
+[sshを使ってリモートマシンでコマンドを叩く際の注意点 - 覚書](https://satoru-takeuchi.hatenablog.com/entry/2017/04/11/223932)
 
 TODO: 違いを調べる
+
+pc 昔
+
+データを1文字ずつ入力、物理的に1文字ずつ入力する時代があった
+
+これがそのままプロトコルに?

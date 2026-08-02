@@ -67,7 +67,7 @@ TODO: 調べる
 
 TODO: 調べる
 
-[10.04 - How large should I make root, [Logical Volume Manager (LVM) versus standard partitioning in Linux](https://www.redhat.com/en/blog/lvm-vs-partitioning)me-usr-var-and-tmp-partitions)
+[Logical Volume Manager (LVM) versus standard partitioning in Linux](https://www.redhat.com/en/blog/lvm-vs-partitioning)
 
 ### 8. `/var/log`
 
@@ -85,14 +85,14 @@ TODO: 調べる
 #### `/var/log/README`
 
 > You are looking for the traditional text log files in /var/log, and they are gone?
-> 
+>
 > Here's an explanation on what's going on:
-> 
+>
 > You are running a systemd-based OS where traditional syslog has been replaced with the Journal. The journal stores the same (and more) information as classic syslog. To make use of the journal and access the collected log data simply invoke "journalctl", which will output the logs in the identical text-based format the syslog files in /var/log used to be. For further details, please refer to journalctl(1).
-> 
+>
 > Alternatively, consider installing one of the traditional syslog implementations available for your distribution, which will generate the classic log files for you. Syslog implementations such as syslog-ng or rsyslog may be installed side-by-side with the journal and will continue to function
-the way they always did.
-> 
+> the way they always did.
+>
 > Thank you!
 
 つまり、ログの記録の方法が変わったらしい。`journalctl > a.txt` などは引き続き可能であった。(一部内容についてはrootでないと取得できなかった。)
@@ -105,7 +105,7 @@ Partitionは、従来のようにディスクを分割する。このメリッ�
 
 一方で、LVMとは、複数の物理ディスク(PV)やパーティションなどをまとめてVolume Groupとし、その中に論理ボリューム(Logical Volume)を作成することができる仕組みである。従来のパーティションの場合、パーティション分割後のサイズの変更などが困難な場合があるが、LVMではディスクのサイズを柔軟に変更をすることができる。
 
-LVM: 
+LVM:
 [Logical Volume Manager (LVM) versus standard partitioning in Linux](https://www.redhat.com/en/blog/lvm-vs-partitioning)
 
 ## 参考
@@ -137,8 +137,15 @@ LVM:
 
 ### MBR vs GPT
 
-|                      | MBR         | GPT       |
-| -------------------- | ----------- | --------- |
-| システム             | BIOSベース  | UEFI      |
-| ディスクのサイズ     | 最大2TBまで | 無制限    |
-| パーティションの個数 | 4個まで     | 128個まで |
+|                      | MBR         | GPT        |
+| -------------------- | ----------- | ---------- |
+| システム             | BIOSベース  | UEFI       |
+| ディスクのサイズ     | 最大2TBまで | ほぼ無制限 |
+| パーティションの個数 | 4個まで     | 128個まで  |
+
+[BIOSとUEFIってなんだ？〜PCの起動を支える2つのファームウェアを完全理解〜 #UEFI - Qiita](https://qiita.com/GeneLab_999/items/c9aa79a988d9c67b00e6)
+
+[Chapter 5. Secure Installation | Security Guide | Red Hat Enterprise Linux | 6 | Red Hat Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/security_guide/chap-security_guide-secure_installation)
+
+
+TODO: バックアップとパーティション、OSとの関係、

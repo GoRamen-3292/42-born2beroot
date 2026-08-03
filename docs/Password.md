@@ -42,6 +42,6 @@ sudo chage -m 2 -M 30 -W 7 [user]
 
 参考:
 
-```bash
+```sh
 man 5 login.defs
 ```

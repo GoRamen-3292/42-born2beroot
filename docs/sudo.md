@@ -43,7 +43,7 @@ Defaults        use_pty
 [How can I change the number of password entry attempts allowed by sudo? - Ask Ubuntu](https://askubuntu.com/questions/534868/how-can-i-change-the-number-of-password-entry-attempts-allowed-by-sudo)
 [bash - sudo change default error message - Stack Overflow](https://stackoverflow.com/questions/41058328/sudo-change-default-error-message)
 [Ubuntu Manpage: 名前](https://manpages.ubuntu.com/manpages/trusty/ja/man5/sudoers.5.html)
-```bash
+```sh
 man sudoers
 ```
 
@@ -63,7 +63,7 @@ ttyは、「テレタイプ」が語源である。しかしながら、当時�
 
 例えば、
 
-```bash
+```sh
 ssh [接続先] sudo apt update
 ```
 

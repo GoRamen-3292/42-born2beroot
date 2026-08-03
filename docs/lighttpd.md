@@ -4,7 +4,7 @@ TODO: 追記する
 
 ## インストール方法
 
-```bash
+```sh
 sudo apt update
 sudo apt install lighttpd lighttpd-doc
 ```
@@ -15,7 +15,7 @@ sudo apt install lighttpd lighttpd-doc
 
 ### php
 
-```bash
+```sh
 sudo apt update
 sudo apt install php-fpm
 ```

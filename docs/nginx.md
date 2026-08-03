@@ -8,7 +8,7 @@
 
 手動でパッケージリストを追加して、nginxをインストールする。そうすることで、最新の安定版のリリースを使用することができる。
 
-```bash
+```sh
 sudo apt install curl gnupg2 ca-certificates lsb-release debian-archive-keyring
 
 curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
@@ -21,7 +21,7 @@ curl https://nginx.org/keys/nginx_signing.key | gpg --dearmor \
 
 今回は、`/srv/`ディレクトリを利用するこの構成を活用しつつ、互換性を保つために、`/var/www`を`/srv/www`にシンボリックリンクをした。
 
-```bash
+```sh
 sudo ln -s /src/www /var/www # 元 -> 先
 ```
 

@@ -8,10 +8,18 @@ libpwqualityがまだインストールされていない場合、インスト�
 sudo apt install libpwquality
 ```
 
-`/etc/pam.d/common-password` を編集する。
+以下の2ファイルを編集する
 
-```sh
-sudo vi /etc/pam.d/common-password
+### `/etc/pam.d/common-password`
+
+```
+password    requisite               pam_pwquality.so retry=3 minlen=10 ucredit=-1 ...
+```
+
+### `/etc/security/pwquality.conf/`
+
+```
+difok = 7
 ```
 
 [pwquality.conf(5) - Linux man page](https://linux.die.net/man/5/pwquality.conf)
@@ -40,8 +48,11 @@ PASS_MIN        2
 sudo chage -m 2 -M 30 -W 7 [user]
 ```
 
+をする必要がある。
+
 参考:
 
 ```sh
 man 5 login.defs
+man 1 chage
 ```

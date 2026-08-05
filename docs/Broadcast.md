@@ -5,3 +5,23 @@
 [Linuxカーネルのバージョン #コマンド - Qiita](https://qiita.com/baba0512/items/2bb89be58c534d7faf35)
 
 [[memo] Linux で CPU の数を調べる #Bash - Qiita](https://qiita.com/yoshi389111/items/a9026769a6c6a8786c90)
+
+[LinuxでCPUのコア数を確認する方法｜物理コア・スレッド数を簡単チェック！ | ちょげぶろぐ](https://www.choge-blog.com/programming/linux-cpu-numberofcore/#toc7)
+
+[Linuxのメモリ使用率を確認する方法は？【top/free/psコマンドの使い方解説】 - インフラ学習サイト「InfraAcademy」](https://engineer-ninaritai.com/linux-memory-usage/)
+
+[Bashで文字列を切り出す方法｜部分文字列・末尾取得・cutとの使い分けを解説 - Bash道](https://bashdo.com/post/bash%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%88%9D%E5%BF%83%E8%80%85%E5%BF%85%E8%A6%8B%EF%BC%81%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E5%88%87%E3%82%8A%E5%87%BA%E3%81%97%E6%96%B9%E6%B3%95/#toc8)
+
+[正規表現\_よく使う正規表現30選 #正規表現 - Qiita](https://qiita.com/mitsuha_003/items/15c0b2ce00ed8f1b57ae)
+
+[【bashシェル】コマンドの実行結果を変数に格納する | 秋拓技術学院](https://syutaku.blog/bash-cmd-get-execution-result/)
+
+[メモリ不足でサーバーが遅い？｜freeコマンドでリソース状況を即チェック - Bash道](https://bashdo.com/post/%e3%83%a1%e3%83%a2%e3%83%aa%e4%b8%8d%e8%b6%b3%e3%81%a7%e3%82%b5%e3%83%bc%e3%83%90%e3%83%bc%e3%81%8c%e9%81%85%e3%81%84%ef%bc%9f%ef%bd%9cfree%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89%e3%81%a7%e3%83%aa/)
+
+[cut コマンドで連続した空白による区切りを処理したい #Linux - Qiita](https://qiita.com/kkdd/items/c29dba9f077a7dd19fe5)
+
+[Bash $((算術式)) のすべて - A 基本編 #ShellScript - Qiita](https://qiita.com/akinomyoga/items/9761031c551d43307374)
+
+[Bashの算術展開（Arithmetic Expansion）を使いこなそう | エンジニア術](https://engineerjutsu.com/bash-arithmetic-expansion/#li_yong_ke_nengna_yan_suan_zito_ji_shu)
+
+[【Linux】 ディスク使用量の表示（df / du / ncdu） | hirota.noの技術ブログ〜 It's all over the network.](https://hirotanoblog.com/linux-disk-usage/12766/)

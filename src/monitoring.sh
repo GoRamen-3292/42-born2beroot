@@ -29,17 +29,19 @@ df_h=`df -h /`
 available_h=`echo $free_result_h | awk '{print $7}'`
 total_h=`echo $free_result_h | awk '{print $2}'`
 
-free_disk=0
-total_disk=0
+available_t=0
+total_t=0
 
-mnts=('/boot' '/' '')
+mnts=('/boot' '/' '/home' '/var' '/srv' '/tmp' '/var/log')
 for mnt in "${mnts[@]}"; do
-  printf '[%s]\n' "$mnt"
-  df_res=`df -P $mnt`
-  available=$avaliable`echo $df_res | awk '{print $7}'`
+  df_res=`df -mP $mnt | sed -n '2p'`
+  available=`echo $df_res | awk '{print $3}'`
   total=`echo $df_res | awk '{print $2}'`
+  # printf '[%s] %s / %s \n' "$mnt" "$available" "$total"
+  available_t=$(($available_t + $available))
+  total_t=$(($total_t + $total))
 done
-
+echo "$available_t/$total_t M ($(($available_t * 100 / $total_t)) %)"
 
 printf "#CPU load: "
 echo

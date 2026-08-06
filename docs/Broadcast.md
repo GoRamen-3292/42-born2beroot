@@ -25,3 +25,13 @@
 [Bashの算術展開（Arithmetic Expansion）を使いこなそう | エンジニア術](https://engineerjutsu.com/bash-arithmetic-expansion/#li_yong_ke_nengna_yan_suan_zito_ji_shu)
 
 [【Linux】 ディスク使用量の表示（df / du / ncdu） | hirota.noの技術ブログ〜 It's all over the network.](https://hirotanoblog.com/linux-disk-usage/12766/)
+
+[awk 基礎 #Linux - Qiita](https://qiita.com/yabeenico/items/a9a70c9d911a11f17899#%E4%BB%A3%E5%85%A5%E6%BC%94%E7%AE%97%E5%AD%90--%E3%82%92%E6%B4%BB%E7%94%A8)
+
+[Bashのfor文は3種類｜最適な書き方と安全テンプレ14選 - Bash道](https://bashdo.com/post/bash-for/#toc9)
+
+[sed で n行目以降だけ表示 - Shell | nju33](https://nju33.com/notes/shell/articles/sed%20%E3%81%A7%20n%E8%A1%8C%E7%9B%AE%E4%BB%A5%E9%99%8D%E3%81%A0%E3%81%91%E8%A1%A8%E7%A4%BA#sed_%E3%81%A7_n%E8%A1%8C%E7%9B%AE%E4%BB%A5%E9%99%8D%E3%81%A0%E3%81%91%E8%A1%A8%E7%A4%BA)
+
+[sed コマンド｜テキスト置換・削除・抽出の基本から実務パターンまで - Bash道](https://bashdo.com/post/sed/)
+
+[Bashシェルスクリプトで数値配列の合計値を算出する | ゲンゾウ用ポストイット](https://genzouw.com/entry/2020/05/07/102250/1991/)

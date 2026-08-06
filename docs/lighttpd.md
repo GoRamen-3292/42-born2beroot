@@ -34,6 +34,11 @@ sudo ln -s /src/www /var/www # 元 -> 先
 
 [Linux FHS: /srv vs /var ... where do I put stuff? - Server Fault](https://serverfault.com/questions/124127/linux-fhs-srv-vs-var-where-do-i-put-stuff)
 
+## 追加
+
+TODO: CGIについて調べる
+
+[CGIってなんじゃ #Web - Qiita](https://qiita.com/_lvyuu/items/a90652cad440fdee21e8)
 
 ## トラブルシューティング
 
@@ -41,4 +46,4 @@ sudo ln -s /src/www /var/www # 元 -> 先
 
 デフォルトのHTTPのポート80がすでに利用されているなどの理由で、仮想マシンとのPort Forwardingがうまく行かない場合がある。この場合、ポートをゲスト 80:8080 ホストのように紐付けをするとうまく行く場合がある。
 
-### 
+###

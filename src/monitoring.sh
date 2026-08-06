@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 
-printf "#Architecture: "
+echo -n "#Architecture: "
 uname --all
 
-printf "#Physical CPU: "
+echo -n "#Physical CPU: "
 # Get the largest number of the physical id
 grep -F 'physical id' /proc/cpuinfo | sort -u | wc -l
 
-printf "#vCPU: "
+echo -n "#vCPU: "
 echo
 
-printf "#Memory Usage: "
+echo -n "#Memory Usage: "
 
 free_result_h=`free -h | grep Mem:`
 available_h=`echo $free_result_h | awk '{print $7}'`
@@ -23,8 +23,7 @@ free_percent=$(($available * 100 / $total))
 
 echo "$available_h / $total_h ($free_percent %)"
 
-printf "#Disk Usage: "
-echo
+echo -n "#Disk Usage: "
 df_h=`df -h /`
 available_h=`echo $free_result_h | awk '{print $7}'`
 total_h=`echo $free_result_h | awk '{print $2}'`
@@ -33,6 +32,7 @@ available_t=0
 total_t=0
 
 mnts=('/boot' '/' '/home' '/var' '/srv' '/tmp' '/var/log')
+df_res=`df -mP $mnt`
 for mnt in "${mnts[@]}"; do
   df_res=`df -mP $mnt | sed -n '2p'`
   available=`echo $df_res | awk '{print $3}'`
@@ -43,16 +43,20 @@ for mnt in "${mnts[@]}"; do
 done
 echo "$available_t/$total_t M ($(($available_t * 100 / $total_t)) %)"
 
-printf "#CPU load: "
-echo
+top -b -n1 | grep "%Cpu(s)" | awk '{printf("#CPU load: %.1f%%\n", 100 - $8)}'
 
-printf "#Last boot: "
-echo
+echo -n "#Last boot: "
+uptime -s
 
-printf "#LVM Use: "
-echo
+echo -n "#LVM Use: "
+res=`lvs`
+if [ -z "$res" ]; then
+  echo "No"
+else
+  echo "Yes"
+fi
 
-printf "#TCP Connections: "
+echo -n "#TCP Connections: "
 echo
 
 printf "#User log: "

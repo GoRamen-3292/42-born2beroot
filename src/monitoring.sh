@@ -25,6 +25,9 @@ echo "$available_h / $total_h ($free_percent %)"
 
 printf "#Disk Usage: "
 echo
+df_h=`df -h /`
+available_h=`echo $free_result_h | awk '{print $7}'`
+total_h=`echo $free_result_h | awk '{print $2}'`
 
 printf "#CPU load: "
 echo

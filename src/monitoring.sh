@@ -29,6 +29,18 @@ df_h=`df -h /`
 available_h=`echo $free_result_h | awk '{print $7}'`
 total_h=`echo $free_result_h | awk '{print $2}'`
 
+free_disk=0
+total_disk=0
+
+mnts=('/boot' '/' '')
+for mnt in "${mnts[@]}"; do
+  printf '[%s]\n' "$mnt"
+  df_res=`df -P $mnt`
+  available=$avaliable`echo $df_res | awk '{print $7}'`
+  total=`echo $df_res | awk '{print $2}'`
+done
+
+
 printf "#CPU load: "
 echo
 

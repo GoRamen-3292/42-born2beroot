@@ -35,3 +35,20 @@
 [sed コマンド｜テキスト置換・削除・抽出の基本から実務パターンまで - Bash道](https://bashdo.com/post/sed/)
 
 [Bashシェルスクリプトで数値配列の合計値を算出する | ゲンゾウ用ポストイット](https://genzouw.com/entry/2020/05/07/102250/1991/)
+
+enpのような接頭群がある。これは、PCIe接続のものに対して適用される
+
+[Networkデバイスの名前慣習メモ #Network - Qiita](https://qiita.com/tetz-akaneya/items/a7a75b2026dd3b25bb4a)
+
+[第11章 ネットワークデバイス命名における一貫性 | ネットワークガイド | Red Hat Enterprise Linux | 7 | Red Hat Documentation](https://docs.redhat.com/ja/documentation/red_hat_enterprise_linux/7/html/networking_guide/ch-consistent_network_device_naming)
+
+[[Linux]grepコマンドと正規表現 #Linux - Qiita](https://qiita.com/tochisuke221/items/e95216cd8b2ccbf1a5ca)
+
+[[Linux]grepコマンドと正規表現 #Linux - Qiita](https://qiita.com/tochisuke221/items/e95216cd8b2ccbf1a5ca#%E3%81%A7%E4%BD%8D%E7%BD%AE%E3%82%92%E7%A4%BA%E3%81%99)
+
+```
+man awk
+man hostname
+man ss
+man w
+```

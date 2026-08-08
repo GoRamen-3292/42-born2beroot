@@ -57,13 +57,18 @@ else
 fi
 
 echo -n "#TCP Connections: "
-echo
+conn=`ss --tcp | wc -l`
+echo $(($conn - 1))
 
 printf "#User log: "
-echo
+w -s -h | wc -l
 
 printf "#Network: "
-echo
+hostname -I
+echo -n "("
+ip a | grep --after-context=3 ": enp*" | awk 'NR==2' | awk '{ print $2 }'
+echo -n ")"
 
 printf "#Sudo: "
-echo
+sudo_len=`cat /var/log/sudo/sudo.log | wc -l`
+echo $(($sudo_len / 2))

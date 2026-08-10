@@ -53,3 +53,9 @@ man ss
 man w
 man head
 ```
+
+### crontab
+
+### Wall
+
+コマンド

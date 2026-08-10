@@ -51,4 +51,5 @@ man awk
 man hostname
 man ss
 man w
+man head
 ```

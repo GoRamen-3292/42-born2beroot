@@ -8,7 +8,7 @@ echo -n "#Physical CPU: "
 grep -F 'physical id' /proc/cpuinfo | sort -u | wc -l
 
 echo -n "#vCPU: "
-echo
+nproc
 
 echo -n "#Memory Usage: "
 
@@ -60,15 +60,16 @@ echo -n "#TCP Connections: "
 conn=`ss --tcp | wc -l`
 echo $(($conn - 1))
 
-printf "#User log: "
+echo -n "#User log: "
 w -s -h | wc -l
 
-printf "#Network: "
-hostname -I
+echo -n "#Network: "
+hostname -I | head - -c -1
 echo -n "("
-ip a | grep --after-context=3 ": enp*" | awk 'NR==2' | awk '{ print $2 }'
+ip a | grep --after-context=3 ": enp*" | awk 'NR==2' | awk '{ print $2 }' | head - -c -1
 echo -n ")"
+echo
 
-printf "#Sudo: "
+echo -n "#Sudo: "
 sudo_len=`cat /var/log/sudo/sudo.log | wc -l`
 echo $(($sudo_len / 2))

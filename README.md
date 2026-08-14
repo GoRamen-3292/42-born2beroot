@@ -4,13 +4,42 @@ _This project has been created as part of the 42 curriculum by ktomita._
 
 ## Description
 
-このプロジェクトでは、
+このプロジェクトでは、仮想環境上にLinuxを指定されたパーティション構成でインストールした後、
+
+- SSHサーバーの構築
+- ファイアウォールの設定
+- ホスト名の設定
+- ユーザーやグループの管理
+- パスワードやパスワードポリシーの設定
+- `sudo`コマンドのインストールと構成
+- システムの各種コマンドを使用して定期的にブロードキャストするためのシェルスクリプトを作成する
+- wallコマンドを利用したブロードキャスト
+
+などを実装する。
+
+これによって、システム管理者としての基本的なスキルを身につけることができる。
+
+---
+
+## Instructions
+
+レビューシートに書かれているだろう具体的な指示に従い検証を行った後に、実際に仮想マシンを起動してそれぞれの機能が正しく動作するかを確認する。
+
+このプロジェクトは校舎PCの、Ubuntu 22.04 LTS上で実行することを想定している。
+
+---
+
+## Resources
+
+`man` コマンドについては、インストールした`Debian GNU/Linux 13.6 (trixie)`に内蔵されていたmanページを参照にしました。
+
+---
 
 ## Project Description
 
-Summary: このセクションでは、"required additions"として課題で求められている「違い」を説明するべき項目について解説をする。
-
 ### システムの違いについて
+
+このセクションでは、"required additions"として課題で求められている「違い」を説明するべき項目について解説をする。
 
 #### Debian vs Rocky Linux
 
@@ -32,7 +61,7 @@ Debianは、Debian Projectによって開発されているフリーなOSであ�
 
 [About - Rocky Linux](https://rockylinux.org/about)
 
-### AppArmor vs SELinux
+#### AppArmor vs SELinux
 
 AppArmorとは、ユーザーやグループによる権限管理だけではなく、実行ファイルごとに権限を分けることによってセキュリティの向上を図るものである。これは、`Application-Centric` と公式サイトに説明されている通りである。
 
@@ -49,15 +78,13 @@ AppArmorとは、ユーザーやグループによる権限管理だけではな
 
 [DAC(任意アクセス制御)とMAC(強制アクセス制御)、RBAC(ロールベースアクセス制御)の違い #初心者 - Qiita](https://qiita.com/miyuki_samitani/items/acde77784237e482aef8)
 
-
-
-### UFW vs firewalld
+#### UFW vs firewalld
 
 Uncomplicated Firewall、通称UFWはnetfilter firewallを制御するものである。(TODO: Fix)
 
  [ufw in Launchpad](https://launchpad.net/ufw)
 
-### VirtualBox vs UTM
+#### VirtualBox vs UTM
 
 どちらもハイパーバイザー、ホストのリソースとゲストのリソースをつなぐソフトウェアである。
 
@@ -79,12 +106,8 @@ UTMはQEMUという仮想化技術をベースにした仮想化ソフト。エ�
 [Oracle VirtualBox](https://www.virtualbox.org/)
 [Home | UTM Documentation](https://docs.getutm.app/)
 
-## 適用した処理
+### Details
 
-1. Virtual Boxから新規仮想マシンを作成、メモリやCPUコア数の割当をし、インストールメディアを初期状態としてインストールする。
-2. 起動し、Debianのセットアップユーティリティに従ってセットアップを進める。その際に、ユーザーの作成やホスト名の設定、ディスクのパーティション分割、セットアップ時にインストールするソフトウェアの指定、アップデート先の設定などを行った。
-3. セットアップが終了して起動し、パッケージのインストールを開始した。
+このセクションでは、自分が行ったデザインや、実装した機能について説明する。
+---
 
-## Resources
-
-`man` コマンドについては、インストールした`Debian GNU/Linux 13.6 (trixie)`に内蔵されていたmanページを参照にしました。

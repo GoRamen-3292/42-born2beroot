@@ -1,4 +1,4 @@
-## Password
+## パスワードの設定について
 
 ### `pam-pwquality`
 

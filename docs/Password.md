@@ -1,6 +1,6 @@
-# Password
+## Password
 
-## `pam-pwquality`
+### `pam-pwquality`
 
 libpwqualityがまだインストールされていない場合、インストールする。
 
@@ -10,13 +10,13 @@ sudo apt install libpwquality
 
 以下の2ファイルを編集する
 
-### `/etc/pam.d/common-password`
+#### `/etc/pam.d/common-password`
 
 ```
 password    requisite               pam_pwquality.so retry=3 minlen=10 ucredit=-1 ...
 ```
 
-### `/etc/security/pwquality.conf/`
+#### `/etc/security/pwquality.conf/`
 
 ```
 difok = 7
@@ -30,7 +30,7 @@ man 5 pwquality.conf
 man 8 pam_pwquality
 ```
 
-## `/etc/login.defs`
+#### `/etc/login.defs`
 
 以下のように編集をする。
 

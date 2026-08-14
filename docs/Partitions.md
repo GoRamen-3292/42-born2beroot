@@ -1,18 +1,18 @@
-# パーティション分割について
+## パーティション分割について
 
-## 概要
+### 概要
 
 - 48GiBのディスクを想定
 
-## Debianのインストール中にやったもの
+### Debianのインストール中にやったもの
 
 1. `/boot` を先にパーティションとして確保する
 2. 残りを利用して暗号化されたボリュームのグループを作成する
 3. それぞれのボリュームを生成する
 
-## それぞれの領域
+### それぞれの領域
 
-### 1. `/boot`
+#### 1. `/boot`
 
 - 2GiBを割当
   - Ubuntuでは実際に1.8GBほど専有された例がある
@@ -24,36 +24,36 @@
 
 [What is the recommended size for a Linux /boot partition? - Server Fault](https://serverfault.com/questions/334663/what-is-the-recommended-size-for-a-linux-boot-partition/1029458#1029458)
 
-### 2. `/`
+#### 2. `/`
 
 - 残りすべて
 - 他の項目を考えた場合の適当なサイズ
 - 最後に設定する、自分の工夫として主張
 
-### 3. `[SWAP]`
+#### 3. `[SWAP]`
 
 [9.15.5. Recommended Partitioning Scheme | Installation Guide | Red Hat Enterprise Linux | 6 | Red Hat Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/installation_guide/s2-diskpartrecommend-x86)
 
 - 4GiB
 - ディスクの容量が不足したときに使用する領域
 
-#### 理由
+##### 理由
 
 - 2-8GBの物理メモリに適するものとして、2GBを選択
 - hibernationは使用しないため
 - もともと2GBを想定していたが、サーバーというクラッシュが致命的になりやすい環境ではゆとりを持つことがベータだと感じたから
 
-### 4. `/home`
+#### 4. `/home`
 
 10GiB
 
-### 5. `/var`
+#### 5. `/var`
 
 4GiB
 
 TODO: 調べる
 
-### 6. `/srv`
+#### 6. `/srv`
 
 4GiB
 
@@ -61,7 +61,7 @@ TODO: 調べる
 
 [fhs - What's the most appropriate directory where to place files shared between users? - Unix & Linux Stack Exchange](https://unix.stackexchange.com/questions/70700/whats-the-most-appropriate-directory-where-to-place-files-shared-between-users)
 
-### 7. `/tmp`
+#### 7. `/tmp`
 
 4GiB
 
@@ -69,11 +69,9 @@ TODO: 調べる
 
 [Logical Volume Manager (LVM) versus standard partitioning in Linux](https://www.redhat.com/en/blog/lvm-vs-partitioning)
 
-### 8. `/var/log`
+#### 8. `/var/log`
 
 2GiB
-
-TODO: 調べる
 
 ログファイル
 
@@ -82,7 +80,7 @@ TODO: 調べる
   - 中には8MBものファイルがある
   - バイナリファイル? 文字化けしている
 
-#### `/var/log/README`
+##### `/var/log/README`
 
 > You are looking for the traditional text log files in /var/log, and they are gone?
 >
@@ -97,9 +95,9 @@ TODO: 調べる
 
 つまり、ログの記録の方法が変わったらしい。`journalctl > a.txt` などは引き続き可能であった。(一部内容についてはrootでないと取得できなかった。)
 
-## 違い
+### 違い
 
-### LVM vs Partition
+#### LVM vs Partition
 
 Partitionは、従来のようにディスクを分割する。このメリットについては別に説明。
 
@@ -108,13 +106,13 @@ Partitionは、従来のようにディスクを分割する。このメリッ�
 LVM:
 [Logical Volume Manager (LVM) versus standard partitioning in Linux](https://www.redhat.com/en/blog/lvm-vs-partitioning)
 
-## 参考
+### 参考
 
 [C.3. Recommended Partitioning Scheme](https://www.debian.org/releases/bookworm/amd64/apcs03.en.html)
 
 [lsblk Command in Linux with Examples - GeeksforGeeks](https://www.geeksforgeeks.org/linux-unix/lsblk-command-in-linux-with-examples/)
 
-## 目的
+### 目的
 
 以下のような形にする
 
@@ -146,6 +144,3 @@ LVM:
 [BIOSとUEFIってなんだ？〜PCの起動を支える2つのファームウェアを完全理解〜 #UEFI - Qiita](https://qiita.com/GeneLab_999/items/c9aa79a988d9c67b00e6)
 
 [Chapter 5. Secure Installation | Security Guide | Red Hat Enterprise Linux | 6 | Red Hat Documentation](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/6/html/security_guide/chap-security_guide-secure_installation)
-
-
-TODO: バックアップとパーティション、OSとの関係、

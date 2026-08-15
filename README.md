@@ -33,6 +33,8 @@ _This project has been created as part of the 42 curriculum by ktomita._
 
 `man` コマンドについては、インストールした`Debian GNU/Linux 13.6 (trixie)`に内蔵されていたmanページを参照した。
 
+なお、明示的に書かれていない場合でも、それぞれのコマンドの理解のために、`man` コマンドや、`--help` `-h` のようなオプションなどを利用している場合がある。
+
 参考にしたWebサイトや、具体的にどこで何を参照したかについては、課題の制約下の中で可読性を少しでも上げるために各セクション内にリンクを貼る形で記載した。
 
 ### AI Usage
@@ -137,6 +139,7 @@ UTMはQEMUという仮想化技術をベースにした仮想化ソフト。Virt
 [サーバー仮想化とは？3つの方式とメリット・デメリットを解説](https://crexgroup.com/ja/development/development/what-is-server-virtualization/)
 
 [Oracle VirtualBox](https://www.virtualbox.org/)
+
 [Home | UTM Documentation](https://docs.getutm.app/)
 
 ##### 仮想化とは
@@ -367,8 +370,11 @@ Defaults        use_pty
 ```
 
 [【備忘録】linuxでsudoを安全に使うための設定](https://zenn.dev/taisei1/articles/962a84e1dbe3a2)
+
 [How can I change the number of password entry attempts allowed by sudo? - Ask Ubuntu](https://askubuntu.com/questions/534868/how-can-i-change-the-number-of-password-entry-attempts-allowed-by-sudo)
+
 [bash - sudo change default error message - Stack Overflow](https://stackoverflow.com/questions/41058328/sudo-change-default-error-message)
+
 [Ubuntu Manpage: 名前](https://manpages.ubuntu.com/manpages/trusty/ja/man5/sudoers.5.html)
 
 ```sh
@@ -570,11 +576,27 @@ man 1 chage
 
 ここでは、シェルスクリプトを作成する。
 
+##### カーネルのバージョン
+
+```sh
+uname --all
+```
+
 [Linuxカーネルのバージョン #コマンド - Qiita](https://qiita.com/baba0512/items/2bb89be58c534d7faf35)
+
+##### CPU / vCPU
+
+`/proc/cpuinfo` の `physical id` の数のうち、重複するものを削除してwcコマンドを利用することで、異なるphysical idの数を元に異なる物理CPUの数を数えることができる。
+
+vCPUの数は、nprcコマンドの結果をそのまま採用した。
 
 [[memo] Linux で CPU の数を調べる #Bash - Qiita](https://qiita.com/yoshi389111/items/a9026769a6c6a8786c90)
 
 [LinuxでCPUのコア数を確認する方法｜物理コア・スレッド数を簡単チェック！ | ちょげぶろぐ](https://www.choge-blog.com/programming/linux-cpu-numberofcore/#toc7)
+
+##### メモリ使用率
+
+メモリの使用率については、`free`コマンドの出力結果を`grep`等で加工して出力した。またBashの算術展開を利用して、計算を行った。
 
 [Linuxのメモリ使用率を確認する方法は？【top/free/psコマンドの使い方解説】 - インフラ学習サイト「InfraAcademy」](https://engineer-ninaritai.com/linux-memory-usage/)
 
@@ -592,6 +614,10 @@ man 1 chage
 
 [Bashの算術展開（Arithmetic Expansion）を使いこなそう | エンジニア術](https://engineerjutsu.com/bash-arithmetic-expansion/#li_yong_ke_nengna_yan_suan_zito_ji_shu)
 
+##### ディスク使用率
+
+こちらについては、`df`コマンドの出力結果を予め定義した配列 `mnts` を利用してfor文によって、それぞれ`grep`等で加工して出力したものを、Bashの算術展開を利用して足し合わせた。
+
 [【Linux】 ディスク使用量の表示（df / du / ncdu） | hirota.noの技術ブログ〜 It's all over the network.](https://hirotanoblog.com/linux-disk-usage/12766/)
 
 [awk 基礎 #Linux - Qiita](https://qiita.com/yabeenico/items/a9a70c9d911a11f17899#%E4%BB%A3%E5%85%A5%E6%BC%94%E7%AE%97%E5%AD%90--%E3%82%92%E6%B4%BB%E7%94%A8)
@@ -604,7 +630,11 @@ man 1 chage
 
 [Bashシェルスクリプトで数値配列の合計値を算出する | ゲンゾウ用ポストイット](https://genzouw.com/entry/2020/05/07/102250/1991/)
 
-enpのような接頭群がある。これは、PCIe接続のものに対して適用される
+##### Network
+
+IPアドレスについては、1つでないといけない指定はなかったので、`hostname` コマンドで取得したIPアドレスを利用して、ループバックアドレスを除くすべてのIPアドレスを表示することにした。
+
+enpのような接頭群がある。これは、PCIe接続のものに対して適用されるもので、MACアドレスに関してはこちらのデバイスのみを表示させるようにした。
 
 [Networkデバイスの名前慣習メモ #Network - Qiita](https://qiita.com/tetz-akaneya/items/a7a75b2026dd3b25bb4a)
 
@@ -614,23 +644,30 @@ enpのような接頭群がある。これは、PCIe接続のものに対して�
 
 [[Linux]grepコマンドと正規表現 #Linux - Qiita](https://qiita.com/tochisuke221/items/e95216cd8b2ccbf1a5ca#%E3%81%A7%E4%BD%8D%E7%BD%AE%E3%82%92%E7%A4%BA%E3%81%99)
 
-```
-man awk
-man hostname
-man ss
-man w
-man head
-```
+##### LVM
+
+`lvs`コマンドを利用して、LVMボリュームを利用しているか取得した。なお、こちらのコマンドには管理者権限が必要である。
+
+##### TCP Conntections
+
+`ss --tcp` コマンドを利用した。こちらのコマンドは、ソケットの調査をするためのツールである。
+
+##### ログイン数
+
+`w` コマンドを利用した。こちらは、ユーザーのログイン状況を1列につき1ユーザーの情報を表示するコマンドなので、`-h` オプションを利用してヘッダーを非表示にした上で、`wc -l` コマンドで行数を数えることで、ログインしているユーザーの数を取得することができる。
+
+##### sudoコマンド
+
+こちらは、ファイルを手動で作成するようにしたので、そのファイルの長さを2で割ることで、sudoコマンドの実行回数を取得することができる、とした。なお、失敗したsudoコマンドの実行回数もカウントされる。
+
 
 ##### crontab
 
-TODO:
+Linuxにおいて、定期的な処理を実行するための仕組みとして、cronというものがある。`crontab -e` コマンドを利用することで、比較的かんたんに定期的な処理を実行することができる。その構文は、わかりやすくコマンド実行時に編集するファイルに掲載されていることが多い。
 
 ##### Wall
 
-コマンド
-
-TODO:
+メッセージをブロードキャストするためのコマンドである。`wall` コマンドを利用することで、ログインしているユーザーに対してメッセージを送信することができる。デフォルトで、引数、ファイル名、あるいは標準入力からの入力を受け付けることができる。
 
 ---
 
@@ -728,7 +765,7 @@ Virtual MachineのNetwork設定から、ポートフォワーディングが適�
 2. サーブされるディレクトリにWordPressのサイトからファイルをダウンロードする。
 3. ブラウザからWordPressのインストールページにアクセスし、データベースの設定やユーザーの作成などを行う。
 
-TODO: リンクを貼る
+[How to install WordPress – Advanced Administration Handbook | Developer.WordPress.org](https://developer.wordpress.org/advanced-administration/before-install/howto-install/)
 
 ---
 
@@ -738,7 +775,7 @@ Dockerとは、コンテナ仮想化のソフトの1つである。これをイ�
 
 ##### インストール方法
 
-ドキュメントをコピー&ペーストして実行しました。具体的には、公式のaptリポジトリの取得先から、Dockerをインストールするという作業をしています。
+ドキュメントをコピー&ペーストして実行した。具体的には、公式のaptリポジトリの取得先から、Dockerをインストールするという作業をしている。その際に、他の方法でインストールされた可能性のあるものを削除する作業も行う。
 
 [Install Docker Engine on Debian | Docker Docs](https://docs.docker.com/engine/install/debian/)
 

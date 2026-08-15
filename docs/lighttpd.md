@@ -13,14 +13,13 @@ sudo apt install lighttpd lighttpd-doc
 
 [Home - lighty news](https://www.lighttpd.net/)
 
-##### PHPのサポート用のファイル
+##### PHPのサポート用のパッケージ
 
 また、PHPを利用するためには、外部のパッケージをインストールする必要がある。
 
-TODO: CGIについて調べる
+その際に利用されるのがCGIという仕組みであり、これを利用することで別のパッケージを利用してPHPコードを実行し、その結果をlighttpdを通してユーザーに返すことができる。
 
 [CGIってなんじゃ #Web - Qiita](https://qiita.com/_lvyuu/items/a90652cad440fdee21e8)
-
 
 ```sh
 sudo apt update

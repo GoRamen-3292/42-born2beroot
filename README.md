@@ -456,11 +456,11 @@ UFWがインストールされていなかった場合には、`sudo apt install
 
 ```
 sudo ufw allow 4242
-sudo ufw allow 8080
+sudo ufw allow 80
 sudo ufw status
 ```
 
-を実行することで、SSHのポート4242と、lighttpdのポート8080を許可する。その後、
+を実行することで、SSHのポート4242と、lighttpdのポート80を許可する。その後、
 
 ```
 sudo ufw enable
@@ -725,6 +725,8 @@ sudo apt install php-fpm
 sudo ln -s /src/www /var/www # 元 -> 先
 ```
 
+実際のHTMLファイルは、`/srv/www/html` に配置されていて、現在はWordPressのPHPファイルなどが配置されている。
+
 [Linux入門：シンボリックリンクの基本と活用術をわかりやすく解説してみた #Linuxコマンド - Qiita](https://qiita.com/free-honda/items/9ca5e6f2e6079b653277)
 
 [php - What is /var/www/html? - Stack Overflow](https://stackoverflow.com/questions/16197663/what-is-var-www-html)
@@ -737,11 +739,17 @@ sudo ln -s /src/www /var/www # 元 -> 先
 
 ここで、サーバーのディレクトリの指定やPHPの設定などを行う。
 
-TODO: 具体的な設定
+[debian - Lighttpd static file server 403 forbidden error - Server Fault](https://serverfault.com/questions/692490/lighttpd-static-file-server-403-forbidden-error)
+
+[WikiStart - Lighttpd - lighty labs](https://redmine.lighttpd.net/projects/lighttpd/wiki#Get-Lighttpd)
 
 ##### トラブルシューティング
 
 上記の設定をしても、接続がうまくいかない場合には、以下の点を確認する。
+
+###### ファイルの権限
+
+ファイルの権限が適切に設定されていない場合、lighttpdがファイルを読み込むことができず、403エラーなどが発生する場合がある。
 
 ###### ファイアーウォールの設定
 
@@ -791,8 +799,19 @@ Dockerとは、コンテナ仮想化のソフトの1つである。これをイ�
 
 [Install Docker Engine on Debian | Docker Docs](https://docs.docker.com/engine/install/debian/)
 
-##### なぜインストールしたのか
+##### なぜインストールしたのかYes
 
 - DockerにはDaemonが必要で、そのデーモンは`a service`の要件を満たせるから
 - サービスのデプロイや、ソフトウェア開発のツールとして、広く使用されているから
   - 例: 複雑な環境構築なしに、dockerのコマンドを実行するだけで仮想環境上に環境構築してソフトウェアが実行されている状態を作成することができる
+
+#### k. Ports
+
+- `:68` `:546` デフォルトのDHCPクライアントのポート
+- `:80` lighttpd / WordPressのポート
+- `:3306` MariaDBのポート
+- `:4242` SSHのポート
+
+これらのうち、ufwで許可したのは当然、SSHのポートとlighttpdのポートのみである。
+
+このため、課題のPDFと `ss` コマンドの出力が違うが、問題ない。

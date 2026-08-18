@@ -160,11 +160,27 @@ UTMはQEMUという仮想化技術をベースにした仮想化ソフト。Virt
 
 ---
 
+#### e. Advanced Package Manager (APT) vs `apt` vs `aptitude`
+
+この3つは、少し複雑な関係となっている。
+
+`apt` も `aptitude` も1つのコマンドであり、どちらもAdvanced Package Manager (APT) をベースにして作られている。
+
+`apt` はDebianにプリインストールされているもので、必要である基本的な機能を兼ね備えている。事実、私は初回提出までこれを利用することはなかった。
+
+一方で、`aptitude`は、Debianにプリインストールされていないもので、独自のターミナル上でのUIを持っているほか、対話型での操作が可能である、自動で解決できなかった複雑な依存関係の解決も可能である。
+
+[apt、apt-get、aptitude](https://zenn.dev/ryo18/articles/aca1c5823a9aaa)
+
+[【Linux】Debianのapt、apt-get、aptitudeの違い | アカスブログ](https://ac-as.net/apt-apt-get-aptitude-difference/)
+
+[aptitude - Wikipedia](https://ja.wikipedia.org/wiki/Aptitude)
+
+---
+
 ### Details
 
 このセクションでは、自分が行ったデザインや、実装した機能について説明する。
-
----
 
 #### a. Installation
 
@@ -524,7 +540,7 @@ sudo apt install libpwquality
 
 以下の2ファイルを編集する
 
-###### `/etc/pam.d/common-password`
+**`/etc/pam.d/common-password`**
 
 ```
 password    requisite               pam_pwquality.so retry=3 minlen=10 ucredit=-1 ...
@@ -544,7 +560,7 @@ man 5 pwquality.conf
 man 8 pam_pwquality
 ```
 
-**`/etc/login.defs`**
+###### `/etc/login.defs`
 
 以下のように編集をする。
 
@@ -791,19 +807,28 @@ Virtual MachineのNetwork設定から、ポートフォワーディングが適�
 
 #### j. Docker
 
-Dockerとは、コンテナ仮想化のソフトの1つである。これをインストールすることで、
+Dockerとは、コンテナ仮想化のソフトの1つである。
+
+##### ハイパーバイザとの違い
+
+Dockerは、VirtualBoxのようなハイパーバイザとは違い、カーネルなどをホストOSと共有し、1つのプロセスとしてコンテナと呼ばれる単位で実行される。一方で、ハイパーバイザーは、当然親のOSに関わらず、仮想マシン上に独立したカーネルを持つ。このほかにもレイヤーという概念や、カーネルの機能を活用することで仮想マシンに比べてDockerは軽量で高速に動作することができる。詳細についてはInceptionの課題でやることであるため、ここでは省略する。
+
+[Dockerはなぜ速い？軽量仮想化の秘密「カーネル共有とレイヤー構造」を徹底深掘り](https://zenn.dev/hokahiro/articles/docker-question)
 
 ##### インストール方法
 
-ドキュメントをコピー&ペーストして実行した。具体的には、公式のaptリポジトリの取得先から、Dockerをインストールするという作業をしている。その際に、他の方法でインストールされた可能性のあるものを削除する作業も行う。
+ドキュメントをコピー&ペーストして実行した。具体的には、公式のaptリポジトリの取得のためのキーを取得してから、`systemctl`コマンドを利用してOSの起動と同時にDockerのデーモンも起動するようにしてインストールするという作業をしている。その際に、リポジトリを取得せずに`apt`コマンドでインストールするなど、他の方法でインストールされた可能性のあるものを削除する作業も行う。
+
+インストールが完了したら、`sudo docker run hello-world`を利用することで実際にテスト用のコンテナを動作させることができる。
 
 [Install Docker Engine on Debian | Docker Docs](https://docs.docker.com/engine/install/debian/)
 
-##### なぜインストールしたのかYes
+##### なぜインストールしたのか
 
 - DockerにはDaemonが必要で、そのデーモンは`a service`の要件を満たせるから
-- サービスのデプロイや、ソフトウェア開発のツールとして、広く使用されているから
-  - 例: 複雑な環境構築なしに、dockerのコマンドを実行するだけで仮想環境上に環境構築してソフトウェアが実行されている状態を作成することができる
+- サービスのデプロイや、ソフトウェア開発のツールとして広く使用されているから
+
+---
 
 #### k. Ports
 
